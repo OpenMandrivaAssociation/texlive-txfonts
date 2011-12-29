@@ -17,8 +17,6 @@ BuildArch:	noarch
 BuildRequires:	texlive-tlpkg
 Requires(pre):	texlive-tlpkg
 Requires(post):	texlive-kpathsea
-Conflicts:	texlive-texmf <= 20110705-3
-Conflicts:	texlive-doc <= 20110705-3
 
 %description
 Txfonts supplies virtual text roman fonts using Adobe Times (or
@@ -33,20 +31,12 @@ All the fonts are in Type 1 format (AFM and PFB files), and are
 supported by TeX metrics (VF and TFM files) and macros for use
 with LaTeX.
 
-%pre
-    %_texmf_mktexlsr_pre
-
 %post
-    %_texmf_mktexlsr_post
-
-%preun
-    if [ $1 -eq 0 ]; then
-	%_texmf_mktexlsr_pre
-    fi
+    %{_sbindir}/texlive.post
 
 %postun
     if [ $1 -eq 0 ]; then
-	%_texmf_mktexlsr_post
+	%{_sbindir}/texlive.post
     fi
 
 #-----------------------------------------------------------------------
@@ -365,7 +355,6 @@ with LaTeX.
 %doc %{_texmfdistdir}/doc/fonts/txfonts/txfontsdocA4.pdf
 %doc %{_texmfdistdir}/doc/fonts/txfonts/txfontsdocA4.tex
 %doc %{_texmfdistdir}/doc/fonts/txfonts/txmi.vpl
-%doc %{_tlpkgobjdir}/*.tlpobj
 
 #-----------------------------------------------------------------------
 %prep
@@ -376,5 +365,3 @@ with LaTeX.
 %install
 mkdir -p %{buildroot}%{_texmfdistdir}
 cp -fpar fonts tex doc %{buildroot}%{_texmfdistdir}
-mkdir -p %{buildroot}%{_tlpkgobjdir}
-cp -fpa tlpkg/tlpobj/*.tlpobj %{buildroot}%{_tlpkgobjdir}
