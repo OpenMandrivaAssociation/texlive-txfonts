@@ -5,8 +5,8 @@
 # catalog-license gpl
 # catalog-version undef
 Name:		texlive-txfonts
-Version:	20180303
-Release:	2
+Version:	20190228
+Release:	1
 Summary:	Times-like fonts in support of mathematics
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/fonts/txfonts
