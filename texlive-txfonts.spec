@@ -3,7 +3,7 @@ Version:	15878
 Release:	2
 Summary:	Times-like fonts in support of mathematics
 Group:		Publishing
-URL:		http://www.ctan.org/tex-archive/fonts/txfonts
+URL:		https://www.ctan.org/tex-archive/fonts/txfonts
 License:	GPL
 Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/txfonts.r%{version}.tar.xz
 Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/txfonts.doc.r%{version}.tar.xz
