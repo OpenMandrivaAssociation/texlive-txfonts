@@ -12,7 +12,8 @@ Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/txfonts.r%{tl_re
 Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/txfonts.doc.r%{tl_revision}.tar.xz
 BuildArch:	noarch
 BuildSystem:	texlive
-Provides:	texlive(%{tl_name}) = %{tl_revision}
+Requires:	texlive-tlpkg
+Provides:	texlive(%{tl_name}) = %{version}
 
 %description
 Txfonts supplies virtual text roman fonts using Adobe Times (or URW
@@ -26,3 +27,10 @@ set. All the fonts are in Type 1 format (AFM and PFB files), and are
 supported by TeX metrics (VF and TFM files) and macros for use with
 LaTeX.
 
+
+%install -a
+mkdir -p %{buildroot}%{_texmf_updmap_d}
+cat > %{buildroot}%{_texmf_updmap_d}/%{tl_name} <<'TL_DROPIN_EOF'
+# from txfonts:
+Map txfonts.map
+TL_DROPIN_EOF
